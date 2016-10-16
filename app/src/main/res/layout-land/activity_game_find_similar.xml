@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:id="@+id/activity_game_find_similar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.kovalenkovolodymyr.kidcard.GameFindSimilarActivity">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:id="@+id/tvTimer"
+        android:textSize="36sp"
+        android:gravity="center" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tlGame">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+
+            <com.kovalenkovolodymyr.kidcard.CardView
+
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+
+            <com.kovalenkovolodymyr.kidcard.CardView
+
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+
+            <com.kovalenkovolodymyr.kidcard.CardView
+
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+
+            <com.kovalenkovolodymyr.kidcard.CardView
+
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+            <com.kovalenkovolodymyr.kidcard.CardView
+                android:layout_width="@dimen/card_size"
+                android:layout_height="@dimen/card_size"
+                android:background="#000000"
+                android:layout_margin="@dimen/card_margin"
+                />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

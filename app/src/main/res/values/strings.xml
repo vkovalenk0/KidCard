@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KidCard</string>
+    <string name="play">PLAY</string>
+    <string name="options">Options</string>
+    <string name="exit">Exit</string>
+    <string name="go">GO!</string>
+</resources>
