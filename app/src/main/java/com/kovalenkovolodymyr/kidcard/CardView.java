@@ -3,12 +3,13 @@ package com.kovalenkovolodymyr.kidcard;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * Created by Volodymyr on 10/15/2016.
  */
 
-public class CardView extends View {
+public class CardView extends ImageView {
     private int faceColor;
     public CardView(Context context, AttributeSet attrs) {
         super(context, attrs);

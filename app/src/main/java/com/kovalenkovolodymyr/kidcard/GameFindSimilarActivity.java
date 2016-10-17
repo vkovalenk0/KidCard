@@ -38,7 +38,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
     private int[] colorsArr = new int[COLOR_COUNT];
 
     private View.OnClickListener ocl;
-    private PairCards pair = new PairCards();
+    private PairCards pair = new PairCards(this);
 
     private int scoreCount = 0;
     private int count_timer = 3;
@@ -55,6 +55,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
         pair.setmListener(new PairCards.OnCardTurnedListener() {
             @Override
             public void onCardTurned(boolean result) {
+
 
                 if(result){
                     scoreCount++;
@@ -128,7 +129,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
                     while (i< COLOR_COUNT){
                         rrow = (TableRow) tlGame.getChildAt(i/4);
                         rview = rrow.getChildAt(i%4);
-                        rview.setBackgroundColor(Color.BLACK);
+                        rview.setBackground(getResources().getDrawable(R.drawable.card_back));
                         rview.setOnClickListener(ocl);
                         i++;
                     }
@@ -186,7 +187,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
             view = (CardView) row.getChildAt(i%4);
             view.setClickable(wasClickable[i]);
             view.setFaceColor(colorsArr[i]);
-            if(!view.isClickable()) //TODO Виправити баг з нажаттям на 1 карту і переворотом
+            if(!view.isClickable())
             {
                 if(oneCardTurned==i){
                     view.setOnClickListener(ocl);
@@ -196,7 +197,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
                 view.setBackgroundColor(colorsArr[i]);
             }
             else {
-                view.setBackgroundColor(Color.BLACK);
+                view.setBackground(getResources().getDrawable(R.drawable.card_back));
                 view.setOnClickListener(ocl);
             }
         }
@@ -220,7 +221,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
                         while (i< COLOR_COUNT){
                             rrow = (TableRow) tlGame.getChildAt(i/4);
                             rview = rrow.getChildAt(i%4);
-                            rview.setBackgroundColor(Color.BLACK);
+                            rview.setBackground(getResources().getDrawable(R.drawable.card_back));
                             rview.setOnClickListener(ocl);
                             i++;
                         }
