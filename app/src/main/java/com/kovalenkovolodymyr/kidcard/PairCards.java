@@ -106,7 +106,7 @@ public class PairCards {
 
     private void turnBackAnimation(CardView v) {
         if (!checking) { //якщо переревертається на пузо
-            
+
             v.setBackground(context.getResources().getDrawable(v.getFaceImage()));
         } else {
             v.setBackground(context.getResources().getDrawable(R.drawable.card_back));
