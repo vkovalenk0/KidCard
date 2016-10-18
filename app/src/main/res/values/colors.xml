@@ -3,22 +3,5 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <array name="colorsForCards">
-        <item>#fffb00</item>
-        <item>#ff5252</item>
-        <item>#ffc107</item>
-        <item>#b2ff59</item>
-        <item>#00e5ff</item>
-        <item>#e040fb</item>
-        <item>#66bb6a</item>
-        <item>#ffffff</item>
-        <item>#fffb00</item>
-        <item>#ff5252</item>
-        <item>#ffc107</item>
-        <item>#b2ff59</item>
-        <item>#00e5ff</item>
-        <item>#e040fb</item>
-        <item>#66bb6a</item>
-        <item>#ffffff</item>
-    </array>
+
 </resources>

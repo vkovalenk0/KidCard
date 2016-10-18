@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 public class CardView extends ImageView {
     private int faceColor;
+    private int faceImage;
     public CardView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -21,5 +22,13 @@ public class CardView extends ImageView {
 
     public int getFaceColor() {
         return faceColor;
+    }
+
+    public int getFaceImage() {
+        return faceImage;
+    }
+
+    public void setFaceImage(int faceImage) {
+        this.faceImage = faceImage;
     }
 }
