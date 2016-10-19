@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChooseGameActivity" />
-        <activity android:name=".GameFindSimilarActivity"></activity>
+        <activity android:name=".GameFindSimilarActivity" />
+        <activity android:name=".WinActivity"></activity>
     </application>
 
 </manifest>

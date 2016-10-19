@@ -9,7 +9,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
  */
 
 public class PairCards {
-    private final int ANIM_DURATION = 150;
+    private final int ANIM_DURATION = 125;
 
     private CardView card1, card2;
     private OnCardTurnedListener mListener;
@@ -38,7 +38,6 @@ public class PairCards {
                 card2 = v;
                 card2.setClickable(false);
                 turnAnimation(card2);
-
             }
         }
     }
@@ -107,9 +106,11 @@ public class PairCards {
     private void turnBackAnimation(CardView v) {
         if (!checking) { //якщо переревертається на пузо
 
-            v.setBackground(context.getResources().getDrawable(v.getFaceImage()));
+            v.setImageDrawable(context.getResources().getDrawable(v.getFaceImage()));
+            v.setBackground(context.getResources().getDrawable(R.drawable.card_borders));
         } else {
             v.setBackground(context.getResources().getDrawable(R.drawable.card_back));
+            v.setImageDrawable(null);
         }
         v.animate()
                 .setInterpolator(new AccelerateDecelerateInterpolator())
