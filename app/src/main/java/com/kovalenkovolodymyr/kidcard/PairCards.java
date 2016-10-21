@@ -11,7 +11,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 public class PairCards {
     private final int ANIM_DURATION = 125;
 
-    private CardView card1, card2;
+    private android.support.v7.widget.CardView card1, card2;
     private OnCardTurnedListener mListener;
     private boolean clickBan = false; // Поки анімація триває не обробляєм кліки
     private boolean checking = false; // Встановлюєм в true під час перевірки
@@ -25,8 +25,7 @@ public class PairCards {
         card2 = null;
     }
 
-
-    public void turnCard(final CardView v) { //true if cardColors equal
+    public void turnCard(final android.support.v7.widget.CardView v) { //true if cardColors equal
         if (!clickBan) {
             // Handler handler = new Handler();
             clickBan = true; // Пофікшено баги з одночасним нажаттям на картки
@@ -44,9 +43,11 @@ public class PairCards {
 
 
     private boolean checkCards() {
+        CardView inCard1 = (CardView) card1.getChildAt(0);
+        CardView inCard2 = (CardView) card2.getChildAt(0);
 
         checking = true;
-        if (card1.getFaceImage() == card2.getFaceImage()) {
+        if (inCard1.getFaceImage() == inCard2.getFaceImage()) {
             resetCards(ANIM_DURATION); // мб +1
             return true;
         }
@@ -60,7 +61,7 @@ public class PairCards {
         return false;
     }
 
-    private void turnAnimation(final CardView v) {
+    private void turnAnimation(final android.support.v7.widget.CardView v) {
 
         //якщо нажато на 1 карту
         if (card2 == null) {
@@ -103,14 +104,17 @@ public class PairCards {
                 .start();
     }
 
-    private void turnBackAnimation(CardView v) {
+    private void turnBackAnimation(android.support.v7.widget.CardView v) {
+        CardView inCard = (CardView) v.getChildAt(0);
         if (!checking) { //якщо переревертається на пузо
 
-            v.setImageDrawable(context.getResources().getDrawable(v.getFaceImage()));
-            v.setBackground(context.getResources().getDrawable(R.drawable.card_borders));
+            inCard.setImageDrawable(context.getResources().getDrawable(inCard.getFaceImage()));
+            inCard.setBackgroundColor(context.getResources().getColor(R.color.cardFaceColor));
+
+            //v.setBackground(context.getResources().getDrawable(R.drawable.card_borders));
         } else {
-            v.setBackground(context.getResources().getDrawable(R.drawable.card_back));
-            v.setImageDrawable(null);
+            inCard.setBackground(context.getResources().getDrawable(R.drawable.card_back));
+            inCard.setImageDrawable(null);
         }
         v.animate()
                 .setInterpolator(new AccelerateDecelerateInterpolator())
@@ -133,11 +137,11 @@ public class PairCards {
         void onCardTurned(boolean result);
     }
 
-    public void setCard1(CardView view) {
+    public void setCard1(android.support.v7.widget.CardView view) {
         card1 = view;
     }
 
-    public CardView getCard1() {
+    public android.support.v7.widget.CardView getCard1() {
         return card1;
     }
 

@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -68,14 +66,14 @@ public class GameFindSimilarActivity extends AppCompatActivity {
         ocl = new View.OnClickListener() { //лісенер для кнопок
             @Override
             public void onClick(View v) {
-                pair.turnCard((CardView) v);
+                pair.turnCard((android.support.v7.widget.CardView) v);
             }
         };
 
         if (savedInstanceState == null) {
             getImages();
             shuffleArray(imagesArr);
-            initGame(imagesArr);
+            initGame();
         }
     }
 
@@ -85,9 +83,8 @@ public class GameFindSimilarActivity extends AppCompatActivity {
         for (int i = 1; i <= CARDS_COUNT / 2; i++) {
             imagesArr[i - 1] = getResources().getIdentifier("pic" + i, "drawable", getPackageName());
         }
-        for (int i = 0; i < CARDS_COUNT / 2; i++) {
-            imagesArr[i + CARDS_COUNT/2] = imagesArr[i];
-        }
+
+        System.arraycopy(imagesArr, 0, imagesArr, 8, CARDS_COUNT / 2);
     }
 
     private void shuffleArray(int[] ar) {
@@ -102,15 +99,18 @@ public class GameFindSimilarActivity extends AppCompatActivity {
     }
 
 
-    private void initGame(int[] images) {
+    private void initGame() {
         int i = 0;
         TableRow row;
+        android.support.v7.widget.CardView cv;
         CardView view;
         while (i < CARDS_COUNT) {
             row = (TableRow) tlGame.getChildAt(i / 4);
-            view = (CardView) row.getChildAt(i % 4);
+            cv = (android.support.v7.widget.CardView) row.getChildAt(i % 4);
+            view = (CardView) cv.getChildAt(0);
             view.setImageDrawable(getResources().getDrawable(imagesArr[i]));
-            view.setBackground(getResources().getDrawable(R.drawable.card_borders));
+            view.setBackgroundColor(getResources().getColor(R.color.cardFaceColor));
+            //view.setBackground(getResources().getDrawable(R.drawable.card_borders));
             view.setFaceImage(imagesArr[i]);
             i++;
         }
@@ -120,6 +120,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
         final Runnable runnable = new Runnable() { //Лютий піздец!! KILL IT WITH FIRE!!
 
             TableRow rrow;
+            android.support.v7.widget.CardView rcv;
             CardView rview;
 
             @Override
@@ -134,10 +135,11 @@ public class GameFindSimilarActivity extends AppCompatActivity {
                     int i = 0;
                     while (i < CARDS_COUNT) {
                         rrow = (TableRow) tlGame.getChildAt(i / 4);
-                        rview = (CardView) rrow.getChildAt(i % 4);
+                        rcv = (android.support.v7.widget.CardView) rrow.getChildAt(i % 4);
+                        rview = (CardView) rcv.getChildAt(0);
                         rview.setBackground(getResources().getDrawable(R.drawable.card_back));
                         rview.setImageDrawable(null);
-                        rview.setOnClickListener(ocl);
+                        rcv.setOnClickListener(ocl);
                         i++;
                     }
                     wasGameInitialized = true;
@@ -152,13 +154,13 @@ public class GameFindSimilarActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         TableRow row;
-        CardView view;
+        android.support.v7.widget.CardView cv;
         boolean[] wasClickable = new boolean[CARDS_COUNT];
         for (int i = 0; i < CARDS_COUNT; i++) {
             row = (TableRow) tlGame.getChildAt(i / 4);
-            view = (CardView) row.getChildAt(i % 4);
-            wasClickable[i] = view.isClickable();
-            if (pair.getCard1() == view)
+            cv = (android.support.v7.widget.CardView) row.getChildAt(i % 4);
+            wasClickable[i] = cv.isClickable();
+            if (pair.getCard1() == cv)
                 oneCardTurned = i;
         }
 
@@ -175,6 +177,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         TableRow row;
+        android.support.v7.widget.CardView cv;
         CardView view;
         boolean[] wasClickable = savedInstanceState.getBooleanArray(WASCLIKABLE_KEY);
         imagesArr = savedInstanceState.getIntArray(IMAGES_KEY);
@@ -187,21 +190,25 @@ public class GameFindSimilarActivity extends AppCompatActivity {
         tvTimer.setText(String.valueOf(scoreCount));
         for (int i = 0; i < CARDS_COUNT; i++) {
             row = (TableRow) tlGame.getChildAt(i / 4);
-            view = (CardView) row.getChildAt(i % 4);
-            view.setClickable(wasClickable[i]);
+            cv = (android.support.v7.widget.CardView) row.getChildAt(i % 4);
+            view = (CardView) cv.getChildAt(0);
+
+            assert wasClickable != null;
+            cv.setClickable(wasClickable[i]);
             view.setFaceImage(imagesArr[i]);
-            if (!view.isClickable()) {
+            if (!cv.isClickable()) {
                 if (oneCardTurned == i) {
-                    view.setOnClickListener(ocl);
-                    pair.setCard1(view);
+                    cv.setOnClickListener(ocl);
+                    pair.setCard1(cv);
                     oneCardTurned = -1;
                 }
                 view.setImageDrawable(getResources().getDrawable(imagesArr[i]));
-                view.setBackground(getResources().getDrawable(R.drawable.card_borders));
+                view.setBackgroundColor(getResources().getColor(R.color.cardFaceColor));
+
             } else {
                 view.setBackground(getResources().getDrawable(R.drawable.card_back));
                 view.setImageDrawable(null);
-                view.setOnClickListener(ocl);
+                cv.setOnClickListener(ocl);
             }
         }
 
@@ -210,6 +217,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
             final Runnable runnable = new Runnable() { //Лютий піздец!! KILL IT WITH FIRE!!
 
                 TableRow rrow;
+                android.support.v7.widget.CardView rcv;
                 CardView rview;
 
                 @Override
@@ -224,10 +232,11 @@ public class GameFindSimilarActivity extends AppCompatActivity {
                         int i = 0;
                         while (i < CARDS_COUNT) {
                             rrow = (TableRow) tlGame.getChildAt(i / 4);
-                            rview = (CardView) rrow.getChildAt(i % 4);
+                            rcv = (android.support.v7.widget.CardView) rrow.getChildAt(i % 4);
+                            rview = (CardView) rcv.getChildAt(0);
                             rview.setBackground(getResources().getDrawable(R.drawable.card_back));
                             rview.setImageDrawable(null);
-                            rview.setOnClickListener(ocl);
+                            rcv.setOnClickListener(ocl);
                             i++;
                         }
                         wasGameInitialized = true;
