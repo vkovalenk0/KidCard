@@ -22,6 +22,8 @@ public class ChooseGameActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.btnGame2:
+                intent.setClass(this,GameFindLetter.class);
+                startActivity(intent);
                 break;
             case R.id.btnGame3:
                 break;

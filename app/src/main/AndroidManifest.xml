@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".ChooseGameActivity" />
         <activity android:name=".GameFindSimilarActivity" />
-        <activity android:name=".WinActivity"></activity>
+        <activity android:name=".WinActivity" />
+        <activity android:name=".GameFindLetter"></activity>
     </application>
 
 </manifest>
