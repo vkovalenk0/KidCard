@@ -12,6 +12,9 @@ import android.widget.ImageView;
 public class CardView extends ImageView {
     private int faceColor;
     private int faceImage;
+    private char letter;
+
+
     public CardView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -30,5 +33,13 @@ public class CardView extends ImageView {
 
     public void setFaceImage(int faceImage) {
         this.faceImage = faceImage;
+    }
+
+    public char getLetter() {
+        return letter;
+    }
+
+    public void setLetter(char letter) {
+        this.letter = letter;
     }
 }

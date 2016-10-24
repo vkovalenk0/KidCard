@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.kovalenkovolodymyr.kidcard.GameFindLetter"
+    tools:context="com.kovalenkovolodymyr.kidcard.GameFindLetterActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -20,28 +20,19 @@
         android:padding="@dimen/card_margin"
         >
         <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/card_size"
+            android:layout_height="@dimen/card_size"
             android:id="@+id/cvCurrentLetter"
             android:layout_margin="@dimen/card_margin"
             app:cardElevation="10dp"
-            >
-            <com.kovalenkovolodymyr.kidcard.CardView
-                android:layout_width="@dimen/card_size"
-                android:layout_height="@dimen/card_size"
-                />
-        </android.support.v7.widget.CardView>
+            ></android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/card_size"
+            android:layout_height="@dimen/card_size"
             android:id="@+id/cvCurrentWord"
             android:layout_margin="@dimen/card_margin"
             app:cardElevation="10dp"
-            >
-            <com.kovalenkovolodymyr.kidcard.CardView
-                android:layout_width="@dimen/card_size"
-                android:layout_height="@dimen/card_size" />
-        </android.support.v7.widget.CardView>
+            ></android.support.v7.widget.CardView>
 
     </LinearLayout>
 
@@ -62,56 +53,28 @@
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
 
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
         </TableRow>
 
         <TableRow
@@ -123,56 +86,28 @@
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
         </TableRow>
 
         <TableRow
@@ -184,56 +119,28 @@
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
         </TableRow>
         <TableRow
             android:layout_width="wrap_content"
@@ -244,56 +151,28 @@
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_margin="6dp"
                 android:layout_width="@dimen/card_size"
                 android:layout_height="@dimen/card_size"
                 app:cardElevation="10dp"
-                android:padding="@dimen/card_margin">
-                <com.kovalenkovolodymyr.kidcard.CardView
-                    android:layout_width="@dimen/card_size"
-                    android:layout_height="@dimen/card_size"
-                    
-                    android:padding="@dimen/card_margin"
-                    />
-            </android.support.v7.widget.CardView>
+                android:padding="@dimen/card_margin"></android.support.v7.widget.CardView>
         </TableRow>
     </TableLayout>
 
