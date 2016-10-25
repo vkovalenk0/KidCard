@@ -1,18 +1,15 @@
 package com.kovalenkovolodymyr.kidcard;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.util.Map;
 import java.util.Random;
-import java.util.jar.Attributes;
 
 public class GameFindLetterActivity extends AppCompatActivity {
     private final int CARDS_COUNT = 16;
@@ -22,7 +19,7 @@ public class GameFindLetterActivity extends AppCompatActivity {
     private String alphabet;
 
     private TableLayout tlGame;
-
+    private View.OnClickListener ocl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +28,28 @@ public class GameFindLetterActivity extends AppCompatActivity {
         countLetters = alphabet.length();
         tlGame = (TableLayout) findViewById(R.id.tlGame2);
 
+        android.support.v7.widget.CardView cvCurrentLetter =
+                (android.support.v7.widget.CardView) findViewById(R.id.cvCurrentLetter);
+        android.support.v7.widget.CardView cvCurrentImage =
+                (android.support.v7.widget.CardView) findViewById(R.id.cvCurrentImage);
+
+        final PairCards pair = new PairCards(this,cvCurrentLetter,cvCurrentImage);
+
+        ocl = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.cvCurrentLetter:
+                    case R.id.cvCurrentImage:
+                        pair.unchooseCard((android.support.v7.widget.CardView) v);
+                        break;
+                    default:
+                        pair.chooseCard(((android.support.v7.widget.CardView) v));
+
+                }
+
+            }
+        };
 
         CardView[] cardViews;
         TextView[] textViews;
@@ -63,28 +82,31 @@ public class GameFindLetterActivity extends AppCompatActivity {
     private void initGame(View[] views) {
         TableRow tr;
         android.support.v7.widget.CardView cv;
+        android.support.v7.widget.CardView cvCurrentLetter =
+                (android.support.v7.widget.CardView) findViewById(R.id.cvCurrentLetter);
+        android.support.v7.widget.CardView cvCurrentImage =
+                (android.support.v7.widget.CardView) findViewById(R.id.cvCurrentImage);
+
+        cvCurrentLetter.setScaleX(0);
+        cvCurrentLetter.setScaleY(0);
+        cvCurrentLetter.setOnClickListener(ocl);
+        cvCurrentLetter.setClickable(false);
+
+        cvCurrentImage.setScaleX(0);
+        cvCurrentImage.setScaleY(0);
+        cvCurrentImage.setOnClickListener(ocl);
+        cvCurrentImage.setClickable(false);
+
 
         for(int i = 0;i<CARDS_COUNT;i++){
             tr = ((TableRow) tlGame.getChildAt(i / 4));
             cv = (android.support.v7.widget.CardView) tr.getChildAt(i%4);
             cv.addView(views[i]);
+            cv.setOnClickListener(ocl);
         }
     }
 
-    private TextView[] formTextViews(String s) {
-        TextView[] texts = new TextView[countLetters];
 
-        for(int i = 0;i<CARDS_COUNT/2;i++){
-            texts[i] = new TextView(this);
-            texts[i].setText(String.valueOf(alphabet.charAt(i)));
-            texts[i].setLayoutParams(new android.support.v7.widget.CardView.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-            ));
-        }
-
-        return texts;
-    }
 
     private void shuffleAbcAndImages() {
 
@@ -104,6 +126,23 @@ public class GameFindLetterActivity extends AppCompatActivity {
         }
 
         alphabet = String.valueOf(abcArr);
+    }
+
+    private TextView[] formTextViews(String s) {
+        TextView[] texts = new TextView[countLetters];
+
+        for(int i = 0;i<CARDS_COUNT/2;i++){
+            texts[i] = new TextView(this);
+            texts[i].setText(String.valueOf(alphabet.charAt(i)));
+            texts[i].setGravity(Gravity.CENTER);
+            texts[i].setTextSize(60);
+            texts[i].setLayoutParams(new android.support.v7.widget.CardView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+            ));
+        }
+
+        return texts;
     }
 
     private CardView[] formCardViews(String abc, int[] images) {

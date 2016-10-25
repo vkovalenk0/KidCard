@@ -5,5 +5,5 @@
     <string name="exit">Exit</string>
     <string name="go">GO!</string>
     <string name="you_win">YOU WIN!!!</string>
-    <string name="alphabet">"abcdefghijklmnoprstw"</string>
+    <string name="alphabet">"ABCDEFGHIJKLMNOPRSTW"</string>
 </resources>
