@@ -14,6 +14,7 @@ public class CardView extends ImageView {
     private int faceImage;
     private char letter;
 
+    private android.support.v7.widget.CardView srcCard;
 
     public CardView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -42,4 +43,5 @@ public class CardView extends ImageView {
     public void setLetter(char letter) {
         this.letter = letter;
     }
+
 }

@@ -30,6 +30,8 @@ public class WinActivity extends AppCompatActivity {
                         finish();
                         break;
                     case GAME2_RESTART:
+                        intent.setClass(this, GameFindLetterActivity.class);
+                        finish();
                         break; //TODO Game2 and Game3
                     case GAME3_RESTART:
                         break;

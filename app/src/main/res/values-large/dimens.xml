@@ -2,4 +2,5 @@
 <resources>
     <dimen name="card_size">100dp</dimen>
     <dimen name="card_margin">10dp</dimen>
+    <dimen name="card_text_size">40sp</dimen>
 </resources>

@@ -1,7 +1,10 @@
 package com.kovalenkovolodymyr.kidcard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import java.util.Random;
 public class GameFindLetterActivity extends AppCompatActivity {
     private final int CARDS_COUNT = 16;
     private int countLetters;
+    private int score = 0;
 
     private int[] imagesArr;
     private String alphabet;
@@ -34,6 +38,22 @@ public class GameFindLetterActivity extends AppCompatActivity {
                 (android.support.v7.widget.CardView) findViewById(R.id.cvCurrentImage);
 
         final PairCards pair = new PairCards(this,cvCurrentLetter,cvCurrentImage);
+        pair.setmListener(new PairCards.OnCardTurnedListener() {
+            @Override
+            public void onCardTurned(boolean result) {
+                if(result){
+                    score++;
+                    Log.d("mylogs", "score " + score);
+                    if(score == CARDS_COUNT/2){
+                        Intent intent =
+                                new Intent(GameFindLetterActivity.this,WinActivity.class);
+                        intent.putExtra(WinActivity.GAME_RESTART_EXTRA,WinActivity.GAME2_RESTART);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            }
+        });
 
         ocl = new View.OnClickListener() {
             @Override
@@ -90,12 +110,12 @@ public class GameFindLetterActivity extends AppCompatActivity {
         cvCurrentLetter.setScaleX(0);
         cvCurrentLetter.setScaleY(0);
         cvCurrentLetter.setOnClickListener(ocl);
-        cvCurrentLetter.setClickable(false);
+        //cvCurrentLetter.setClickable(false);
 
         cvCurrentImage.setScaleX(0);
         cvCurrentImage.setScaleY(0);
         cvCurrentImage.setOnClickListener(ocl);
-        cvCurrentImage.setClickable(false);
+        //cvCurrentImage.setClickable(false);
 
 
         for(int i = 0;i<CARDS_COUNT;i++){
@@ -135,7 +155,10 @@ public class GameFindLetterActivity extends AppCompatActivity {
             texts[i] = new TextView(this);
             texts[i].setText(String.valueOf(alphabet.charAt(i)));
             texts[i].setGravity(Gravity.CENTER);
-            texts[i].setTextSize(60);
+
+            texts[i].setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    getResources().getDimensionPixelSize(R.dimen.card_text_size));
+
             texts[i].setLayoutParams(new android.support.v7.widget.CardView.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT

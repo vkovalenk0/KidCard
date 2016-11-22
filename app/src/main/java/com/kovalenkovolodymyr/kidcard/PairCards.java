@@ -2,25 +2,32 @@ package com.kovalenkovolodymyr.kidcard;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 /**
  * Created by Volodymyr on 10/15/2016.
  */
 
 public class PairCards {
-    private final int ANIM_DURATION = 125;
+    private final int ANIM_DURATION = 150;
 
     private android.support.v7.widget.CardView card1, card2;
     private android.support.v7.widget.CardView curLetterCard,curImageCard; //used in game2
+    private android.support.v7.widget.CardView srcCurLetter,srcCurImage; //saves views that are choosen
 
     private OnCardTurnedListener mListener;
     private boolean clickBan = false; // Поки анімація триває не обробляєм кліки
     private boolean checking = false; // Встановлюєм в true під час перевірки
     private Runnable optionRunnable = null; //що виконується після зворотньої анімації
     private Context context;
+
+    private boolean letterClicked = false;
+    private boolean imageClicked = false;
 
 
     public PairCards(Context context) { //конструктор для game1
@@ -59,7 +66,70 @@ public class PairCards {
     }
 
     public void chooseCard(android.support.v7.widget.CardView v){
-        chooseAnimation(v);
+        View innerView = v.getChildAt(0);
+        if(innerView instanceof TextView){
+            if(!letterClicked){
+                Log.d("mylogs","Letter clicked");
+                letterClicked = true;
+                srcCurLetter = v;
+                chooseAnimation(v);
+            }
+        }
+
+        if(innerView instanceof CardView) {
+            if(!imageClicked){
+                Log.d("mylogs","Image clicked");
+                imageClicked = true;
+                srcCurImage = v;
+                chooseAnimation(v);
+            }
+        }
+    }
+
+    public void unchooseCard(android.support.v7.widget.CardView v) {
+        View innerView = v.getChildAt(0);
+        if(innerView instanceof TextView){
+            if(letterClicked) {
+                Log.d("mylogs", "CURRENT Letter clicked");
+                unchooseAnimation(v);
+            }
+        }
+        if(innerView instanceof CardView){
+            if(imageClicked) {
+                Log.d("mylogs", "CURRENT Image clicked");
+                unchooseAnimation(v);
+            }
+        }
+
+    }
+
+    private void unchooseAnimation(android.support.v7.widget.CardView v){
+        final View innerView = v.getChildAt(0);
+        Runnable postAnim = null;
+        if(innerView instanceof TextView){
+            postAnim = new Runnable() {
+                @Override
+                public void run() {
+                    showCurCardAnimation(srcCurLetter);
+                }
+            };
+        }
+        else if(innerView instanceof CardView){
+            postAnim = new Runnable() {
+                @Override
+                public void run() {
+                    showCurCardAnimation(srcCurImage);
+                }
+            };
+        }
+        v.animate()
+                .setInterpolator(new AccelerateDecelerateInterpolator())
+                .scaleX(0)
+                .scaleY(0)
+                .setDuration(ANIM_DURATION)
+                .withEndAction(postAnim)
+                .start();
+
     }
 
     private void chooseAnimation(final android.support.v7.widget.CardView v) {
@@ -75,7 +145,7 @@ public class PairCards {
                 }
             };
         }
-        if (innerView instanceof CardView) {
+        else if (innerView instanceof CardView) {
             postAnim = new Runnable() {
                 @Override
                 public void run() {
@@ -85,7 +155,6 @@ public class PairCards {
                     inImageCard.setLetter(((CardView) innerView).getLetter());
 
                     inImageCard.setImageResource(inImageCard.getFaceImage());
-
                     showCurCardAnimation(curImageCard);
                 }
             };
@@ -105,9 +174,19 @@ public class PairCards {
         Runnable postAnim = new Runnable() {
             @Override
             public void run() {
+                mListener.onCardTurned(checkCardsGame2());
                 curCard.setClickable(true);
             }
         };
+
+        if(curCard.equals(srcCurLetter)){
+            letterClicked = false;
+            srcCurLetter = null;
+        }
+        else if(curCard.equals(srcCurImage)){
+            imageClicked = false;
+            srcCurImage = null;
+        }
 
         curCard.animate()
                 .setInterpolator(new AccelerateDecelerateInterpolator())
@@ -116,11 +195,59 @@ public class PairCards {
                 .setDuration(ANIM_DURATION)
                 .withEndAction(postAnim)
                 .start();
-    }
-
-    public void unchooseCard(android.support.v7.widget.CardView v) {
 
     }
+
+    private boolean checkCardsGame2() {
+        if(imageClicked && letterClicked){
+            curLetterCard.animate()
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .scaleX(0)
+                    .scaleY(0)
+                    .setStartDelay(50)
+                    .setDuration(ANIM_DURATION)
+                    .start();
+            curImageCard.animate()
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .scaleX(0)
+                    .scaleY(0)
+                    .setStartDelay(50)
+                    .setDuration(ANIM_DURATION)
+                    .start();
+
+            if(((CardView) curImageCard.getChildAt(0)).getLetter()
+                    == ((TextView) curLetterCard.getChildAt(0)).getText().charAt(0)) {
+
+                srcCurImage.setClickable(false);
+                srcCurLetter.setClickable(false);
+                letterClicked = false;
+                imageClicked = false;
+                return true;
+            }
+
+            else {
+                srcCurImage.animate()
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .scaleX(1)
+                        .scaleY(1)
+                        .setDuration(ANIM_DURATION)
+                        .start();
+
+                srcCurLetter.animate()
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .scaleX(1)
+                        .scaleY(1)
+                        .setDuration(ANIM_DURATION)
+                        .start();
+
+            }
+            letterClicked = false;
+            imageClicked = false;
+        }
+
+        return false;
+    }
+
 
     private boolean checkCards() {
         CardView inCard1 = (CardView) card1.getChildAt(0);
