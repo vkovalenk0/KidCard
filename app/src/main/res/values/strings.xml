@@ -6,4 +6,8 @@
     <string name="go">GO!</string>
     <string name="you_win">YOU WIN!!!</string>
     <string name="alphabet">"ABCDEFGHIJKLMNOPRSTW"</string>
+    <string name="game1_accuracy_key">game1_accuracy_key</string>
+    <string name="game2_accuracy_key">game2_accuracy_key</string>
+    <string name="game1_count_key">game1_count_key</string>
+    <string name="game2_count_key">game2_count_key</string>
 </resources>

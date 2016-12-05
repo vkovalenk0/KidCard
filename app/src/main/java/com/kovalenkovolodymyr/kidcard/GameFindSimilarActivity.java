@@ -36,6 +36,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
     private PairCards pair = new PairCards(this);
 
     private int scoreCount = 0;
+    private int allTriesCount = 0;
     private int count_timer = 3;
 
 
@@ -48,6 +49,7 @@ public class GameFindSimilarActivity extends AppCompatActivity {
         pair.setmListener(new PairCards.OnCardTurnedListener() {
             @Override
             public void onCardTurned(boolean result) {
+                allTriesCount++;
                 if (result) {
                     scoreCount++;
                     tvTimer.setText(String.valueOf(scoreCount));
@@ -55,11 +57,13 @@ public class GameFindSimilarActivity extends AppCompatActivity {
                         Intent intent =
                                 new Intent(GameFindSimilarActivity.this,WinActivity.class);
                         intent.putExtra(WinActivity.GAME_RESTART_EXTRA,WinActivity.GAME1_RESTART);
+                        intent.putExtra(WinActivity.GAME_ACCURACY, (double)scoreCount/allTriesCount);
                         startActivity(intent);
                         finish();
                         //tvTimer.setText("Win!");
                     }
                 }
+
             }
         });
 

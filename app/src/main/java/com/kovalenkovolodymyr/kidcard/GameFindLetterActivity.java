@@ -65,7 +65,6 @@ public class GameFindLetterActivity extends AppCompatActivity {
                         break;
                     default:
                         pair.chooseCard(((android.support.v7.widget.CardView) v));
-
                 }
 
             }

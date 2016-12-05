@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:id="@+id/activity_game_find_similar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     tools:context="com.kovalenkovolodymyr.kidcard.GameFindSimilarActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background2"
+        android:scaleType="centerCrop"
+        android:id="@+id/imageView" />
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="125dp" />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:id="@+id/tvTimer"
         android:textSize="36sp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_below="@id/spacer"
+        />
 
     <TableLayout
         android:padding="32dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/tlGame">
+        android:id="@+id/tlGame"
+        android:layout_below="@+id/tvTimer"
+        android:layout_centerHorizontal="true">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -267,4 +280,4 @@
             </android.support.v7.widget.CardView>
         </TableRow>
     </TableLayout>
-</LinearLayout>
+</RelativeLayout>
