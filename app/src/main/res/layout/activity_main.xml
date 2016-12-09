@@ -44,7 +44,7 @@
         android:layout_below="@+id/btnPlay"
         android:layout_alignStart="@+id/btnPlay"
         android:onClick="onClick"
-         />
+        android:layout_alignLeft="@+id/btnPlay" />
 
     <Button
         android:text="@string/exit"

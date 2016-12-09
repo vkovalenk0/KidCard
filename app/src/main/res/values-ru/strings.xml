@@ -1,0 +1,9 @@
+<resources>
+    <string name="play">Играть</string>
+    <string name="options">Настройки</string>
+    <string name="exit">Выход</string>
+    <string name="go">Вперед!</string>
+    <string name="you_win">Ты молодец!!!</string>
+    <string name="alphabet">АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЧШЭЮЯ</string>
+    <string name="settings">Settings</string>
+</resources>

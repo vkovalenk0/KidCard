@@ -1,13 +1,19 @@
 <resources>
-    <string name="app_name">KidCard</string>
+    <string name="app_name" translatable="false">KidCard</string>
     <string name="play">PLAY</string>
     <string name="options">Options</string>
     <string name="exit">Exit</string>
     <string name="go">GO!</string>
     <string name="you_win">YOU WIN!!!</string>
-    <string name="alphabet">"ABCDEFGHIJKLMNOPRSTW"</string>
-    <string name="game1_accuracy_key">game1_accuracy_key</string>
-    <string name="game2_accuracy_key">game2_accuracy_key</string>
-    <string name="game1_count_key">game1_count_key</string>
-    <string name="game2_count_key">game2_count_key</string>
+    <string name="alphabet">ABCDEFGHIJKLMNOPRSTUVWYZ</string>
+    <string name="game1_accuracy_key" translatable="false">game1_accuracy_key</string>
+    <string name="game2_accuracy_key" translatable="false">game2_accuracy_key</string>
+    <string name="game1_count_key" translatable="false">game1_count_key</string>
+    <string name="game2_count_key" translatable="false">game2_count_key</string>
+    <string name="settings">Settings</string>
+    <string-array name="langList">
+        <item>English</item>
+        <item>Українська</item>
+        <item>Русский</item>
+    </string-array>
 </resources>
